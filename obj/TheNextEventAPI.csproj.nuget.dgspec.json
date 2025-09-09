@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "e:\\Gallery\\the Next Event 55555\\Back-End\\TheNextEventAPI\\TheNextEventAPI.csproj": {}
+    "E:\\Gallery\\the Next Event 55555\\Back-End\\TheNextEventAPI\\TheNextEventAPI.csproj": {}
   },
   "projects": {
-    "e:\\Gallery\\the Next Event 55555\\Back-End\\TheNextEventAPI\\TheNextEventAPI.csproj": {
+    "E:\\Gallery\\the Next Event 55555\\Back-End\\TheNextEventAPI\\TheNextEventAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "e:\\Gallery\\the Next Event 55555\\Back-End\\TheNextEventAPI\\TheNextEventAPI.csproj",
+        "projectUniqueName": "E:\\Gallery\\the Next Event 55555\\Back-End\\TheNextEventAPI\\TheNextEventAPI.csproj",
         "projectName": "TheNextEventAPI",
-        "projectPath": "e:\\Gallery\\the Next Event 55555\\Back-End\\TheNextEventAPI\\TheNextEventAPI.csproj",
+        "projectPath": "E:\\Gallery\\the Next Event 55555\\Back-End\\TheNextEventAPI\\TheNextEventAPI.csproj",
         "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "e:\\Gallery\\the Next Event 55555\\Back-End\\TheNextEventAPI\\obj\\",
+        "outputPath": "E:\\Gallery\\the Next Event 55555\\Back-End\\TheNextEventAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -22,15 +22,15 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net9.0"
+          "net8.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net9.0": {
-            "targetAlias": "net9.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {}
           }
         },
@@ -47,8 +47,8 @@
         "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
-        "net9.0": {
-          "targetAlias": "net9.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "dependencies": {
             "BCrypt.Net-Next": {
               "target": "Package",
@@ -60,29 +60,29 @@
             },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
-              "version": "[9.0.8, )"
+              "version": "[8.0.8, )"
             },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
-              "version": "[9.0.6, )"
+              "version": "[8.0.8, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[9.0.8, )"
+              "version": "[8.0.8, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.8, )"
+              "version": "[8.0.8, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[9.0.4, )"
+              "version": "[6.8.1, )"
             },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
-              "version": "[8.14.0, )"
+              "version": "[8.1.0, )"
             }
           },
           "imports": [

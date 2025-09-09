@@ -42,12 +42,19 @@ builder.Services.AddScoped<ICloudinaryService, CloudinaryService>();
 // Add controllers
 builder.Services.AddControllers();
 
-// Add CORS
+// Add CORS - Allow all origins for production deployment
 builder.Services.AddCors(options =>
 {
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+    
     options.AddPolicy("AllowFrontend", policy =>
     {
-        policy.WithOrigins("http://localhost:3000", "http://localhost:5173") // React dev servers
+        policy.WithOrigins("http://localhost:3000", "http://localhost:5173", "https://thenextevent.runasp.net", "http://thenextevent.runasp.net") // React dev servers and production
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials();
@@ -93,19 +100,51 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+// Simple startup without complex database operations
+try
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(c =>
+    // Try to apply migrations but don't fail if it doesn't work
+    using (var scope = app.Services.CreateScope())
     {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "The Next Event API V1");
-    });
+        var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+        context.Database.EnsureCreated(); // Simple approach
+    }
+}
+catch
+{
+    // Ignore database errors on startup
 }
 
-app.UseHttpsRedirection();
+// Configure the HTTP request pipeline.
+// Enable Swagger in all environments
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "The Next Event API V1");
+    c.RoutePrefix = "swagger";
+});
 
-app.UseCors("AllowFrontend");
+// Simple root endpoint
+app.MapGet("/", () => new { 
+    Message = "The Next Event API is running successfully!", 
+    Version = "1.0.0",
+    Timestamp = DateTime.UtcNow,
+    SwaggerUrl = "/swagger"
+});
+
+// Simple health check
+app.MapGet("/health", () => new { 
+    Status = "Healthy", 
+    Timestamp = DateTime.UtcNow
+});
+
+// Don't redirect to HTTPS in production
+if (app.Environment.IsDevelopment())
+{
+    app.UseHttpsRedirection();
+}
+
+app.UseCors("AllowAll");
 
 app.UseAuthentication();
 app.UseAuthorization();
